@@ -1,0 +1,23 @@
+{
+    "h1": {
+        "background_color": "#418DFF",
+        "bold": true,
+        "prefix": "# ",
+        "margin": 0
+    },
+    "h2": {
+        "background_color": "#8353D2",
+        "bold": true,
+        "prefix": "## ",
+        "margin": 0
+    },
+    "h3": {
+        "background_color": "#107E8D",
+        "bold": true,
+        "prefix": "### ",
+        "margin": 0
+    },
+    "item": {
+        "block_prefix": "  . "
+    }
+}
