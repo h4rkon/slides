@@ -1,3 +1,7 @@
+use slides on Mac
+
+brew install slides
+
 use pandoc and basictex on Mac
 
 brew install pandoc
