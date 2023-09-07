@@ -1,4 +1,4 @@
-use slides on Mac
+# Use slides on Mac
 
 brew install slides
 
