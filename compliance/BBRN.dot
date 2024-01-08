@@ -1,0 +1,57 @@
+digraph G {
+    rankdir=TB;
+    node [shape=box, style=filled, color=lightblue];
+
+    // Define nodes
+    CheckValidationRelevance [label="Check validation relevance"];
+    IXXT00ENG0019 [label="IXXT00ENG0019"];
+    IXXT00ENG0019Output [label="IXXT00ENG0019 checklist filled"];
+    ValidationRelevant [shape=diamond, label="Validation relevant?"];
+    CopyToLocal [label="Copy result to local application list"];
+    ArchiveOriginal [label="Archive result of original document"];
+    PreValidationActivities [label="Initiate Pre Validation activities"];
+    AddToBEAM [label="Add application to BEAM"];
+    NewInputNode [label="IXXP00ENG0006\nIXXP00ENG0084\nIXXP00ENG0083"];
+
+    // Invisible node to guide the arrow
+    InvisibleNode [style=invis, label=""];
+
+    // Grouping 'ChangeControl', 'PeriodicReview', and 'NewApplication' in a subgraph
+    subgraph cluster_0 {
+        label = "Initiating Processes";
+        ChangeControl [label="Change Control"];
+        PeriodicReview [label="Periodic Review"];
+        NewApplication [label="New Application"];
+        InvisibleNode;
+    }
+
+    // Subgraph to ensure certain nodes are on the same rank
+    subgraph cluster_sameRank {
+        style=invis;
+        rank=same;
+        CheckValidationRelevance;
+        IXXT00ENG0019;
+    }
+
+    // Define edges
+    InvisibleNode -> CheckValidationRelevance [lhead=cluster_0];
+    IXXT00ENG0019 -> CheckValidationRelevance [label="Input", style=dashed, color=red];
+    CheckValidationRelevance -> IXXT00ENG0019Output [style=dashed, color=red];
+    CheckValidationRelevance -> ValidationRelevant;
+    
+    // Decision paths from the ValidationRelevant node
+    ValidationRelevant -> CopyToLocal [label="yes"];
+    ValidationRelevant -> AddToBEAM [label="no"];
+
+    // Extended "yes" path
+    CopyToLocal -> ArchiveOriginal;
+    ArchiveOriginal -> PreValidationActivities;
+    PreValidationActivities -> AddToBEAM;
+
+    // Inputs to CopyToLocal and ArchiveOriginal nodes
+    IXXT00ENG0019Output -> CopyToLocal [style=dashed, color=red];
+    IXXT00ENG0019Output -> ArchiveOriginal [style=dashed, color=red];
+
+    // New input to PreValidationActivities
+    NewInputNode -> PreValidationActivities [style=dashed, color=red];
+}

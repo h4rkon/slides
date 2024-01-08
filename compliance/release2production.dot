@@ -1,0 +1,19 @@
+digraph ReleaseProcess {
+    rankdir=TB;
+    node [shape=box, style=filled, color=lightblue];
+
+    CR [label="Change Request (CR)"];
+    DevTest [label="Development & Testing"];
+    Valid [label="Validation Stage"];
+    RegReview [label="Regulatory & Compliance Review"];
+    ReleaseApp [label="Release Approval"];
+    DeployProd [label="Deployment to Production"];
+    PostRelease [label="Post-release Monitoring"];
+    
+    CR -> DevTest;
+    DevTest -> Valid;
+    Valid -> RegReview;
+    RegReview -> ReleaseApp;
+    ReleaseApp -> DeployProd;
+    DeployProd -> PostRelease;
+}

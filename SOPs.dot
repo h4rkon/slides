@@ -1,0 +1,29 @@
+digraph SOPs {
+    // Node definitions
+    SOP51 [label="SOP51: Computerized System Lifecycle"]
+    SOP54 [label="SOP54: Computerized System Validation"]
+    SOP160 [label="SOP160: Design and Development Planning"]
+    SOP163 [label="SOP163: Process of Product Development"]
+    SOP164 [label="SOP164: Process of Design Change"]
+    SOP165 [label="SOP165: Human Factors Engineering/Usability Engineering"]
+    SOP169 [label="SOP169: Pre-Production Defect Management"]
+    SOP171 [label="SOP171: Process of Design Review"]
+    SOP172 [label="SOP172: Design Input"]
+    SOP173 [label="SOP173: Design Requirement Traceability"]
+    SOP174 [label="SOP174: Software Life Cycle Process"]
+    SOP176 [label="SOP176: Design Output"]
+    SOP178 [label="SOP178: Cyber Security Risk Management"]
+    SOP189 [label="SOP189: R&D Risk Management"]
+
+    // Edge definitions
+    SOP51 -> SOP164
+    SOP51 -> SOP54
+    SOP163 -> SOP160
+    SOP163 -> SOP171
+    SOP163 -> SOP165
+    SOP163 -> SOP173
+    SOP163 -> SOP176
+    SOP165 -> SOP173
+    SOP165 -> SOP176
+    SOP174 -> SOP169
+}
