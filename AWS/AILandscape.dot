@@ -1,0 +1,73 @@
+digraph G {
+    node [shape=box, style=rounded];
+    rankdir=LR;
+    
+    subgraph cluster_ml_platforms {
+        label="ML Platforms and Infrastructure";
+        style=filled;
+        color=lightgrey;
+        "Amazon SageMaker" -> {"SageMaker Studio" "SageMaker Autopilot" "SageMaker Ground Truth" "SageMaker Neo" "SageMaker Data Wrangler"};
+    }
+
+    subgraph cluster_ai_services {
+        label="AI Services (Pre-Built, API-Based)";
+        style=filled;
+        color=lightblue;
+        "Amazon Comprehend" "Amazon Rekognition" "Amazon Polly" "Amazon Textract" "Amazon Transcribe" "Amazon Translate" "Amazon Kendra" "Amazon Lex";
+    }
+
+    subgraph cluster_gen_ai {
+        label="Generative AI and Foundation Models";
+        style=filled;
+        color=lightgreen;
+        "AWS Bedrock" -> {"Foundation Models (Titan, Claude)"};
+        "Amazon CodeWhisperer" "Amazon Personalize";
+    }
+
+    subgraph cluster_ai_business {
+        label="AI for Business Applications";
+        style=filled;
+        color=yellow;
+        "Amazon Forecast" "Amazon Fraud Detector" "Amazon HealthLake" "Amazon Lookout for Vision" "Amazon Lookout for Equipment" "Amazon Lookout for Metrics";
+    }
+
+    subgraph cluster_specialized_ai {
+        label="Specialized AI and ML Tools";
+        style=filled;
+        color=pink;
+        "Amazon Augmented AI (A2I)" "AWS Deep Learning AMIs" "AWS DeepRacer" "AWS DeepLens";
+    }
+
+    subgraph cluster_edge_ai {
+        label="Edge ML and IoT AI";
+        style=filled;
+        color=orange;
+        "AWS IoT Greengrass" "AWS Panorama";
+    }
+
+    subgraph cluster_data_tools {
+        label="Data and Analytics Tools for ML";
+        style=filled;
+        color=lightyellow;
+        "Amazon EMR" "AWS Glue" "Amazon Redshift ML" "Amazon Athena" "Amazon QuickSight";
+    }
+
+    subgraph cluster_ml_deployment {
+        label="ML/AI Deployment and Monitoring";
+        style=filled;
+        color=lightcyan;
+        "Amazon Elastic Inference" "AWS Inferentia" "Amazon SageMaker Model Monitor" "Amazon SageMaker Clarify";
+    }
+
+    subgraph cluster_ml_hardware {
+        label="ML Hardware and Acceleration";
+        style=filled;
+        color=lightpurple;
+        "AWS Trainium" "AWS Inferentia";
+    }
+
+    // Connect sections where logical relations exist
+    "Amazon SageMaker" -> "AWS Trainium" [label="Training Acceleration"];
+    "AWS Panorama" -> "Amazon Rekognition" [label="Computer Vision"];
+    "Amazon Redshift ML" -> "Amazon SageMaker" [label="ML Integration"];
+}

@@ -1,0 +1,35 @@
+digraph UseCaseFlow {
+    node [shape=box];
+    nodesep=1.0;
+
+    Authenticated [label="Authenticated"];
+    DashboardVisible [label="Dashboard Visible"];
+    DocumentOpenReadOnly [label="Document Open, Read-Only"];
+    DocumentOpenWriteEnabled [label="Document Open, Write Enabled"];
+    DocumentOpenReadOnlyDelta [label="Document Open, Read-Only, Visualized Delta"];
+    NotLoggedIn [label="Not Logged In"];
+
+    Authenticated -> DashboardVisible [label="2"];
+    DashboardVisible -> DocumentOpenReadOnly [label="3"];
+    DocumentOpenReadOnly -> DocumentOpenReadOnly [label="5"];
+    DocumentOpenWriteEnabled -> DocumentOpenWriteEnabled [label="5"];
+    DocumentOpenReadOnly -> DocumentOpenReadOnly [label="6"];
+    DocumentOpenWriteEnabled -> DocumentOpenWriteEnabled [label="6"];
+    DocumentOpenReadOnly -> DocumentOpenWriteEnabled [label="7"];
+    DocumentOpenWriteEnabled -> DocumentOpenWriteEnabled [label="8"];
+    DocumentOpenReadOnly -> NotLoggedIn [label="9a"];
+    DocumentOpenWriteEnabled -> NotLoggedIn [label="9a"];
+    DocumentOpenReadOnly -> DashboardVisible [label="9b"];
+    DocumentOpenWriteEnabled -> DashboardVisible [label="9b"];
+    DocumentOpenWriteEnabled -> DocumentOpenReadOnly [label="10"];
+    DashboardVisible -> DashboardVisible [label="11"];
+    DashboardVisible -> DashboardVisible [label="12"];
+    DocumentOpenReadOnly -> DocumentOpenReadOnly [label="13"];
+    DocumentOpenReadOnly -> DocumentOpenReadOnlyDelta [label="14"];
+    DocumentOpenReadOnlyDelta -> DocumentOpenReadOnly [label="15"];
+
+    Authenticated -> DocumentOpenReadOnly [label="4"];
+    Authenticated -> DocumentOpenWriteEnabled [label="4"];
+    NotLoggedIn -> Authenticated [label="1"];
+    DashboardVisible -> DocumentOpenReadOnly [label="3"];
+}
